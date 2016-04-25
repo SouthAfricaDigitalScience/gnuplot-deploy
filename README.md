@@ -1,2 +1,5 @@
 # gnuplot-deploy
-build scripts for gnuplot 
+
+build scripts for gnuplot.
+
+Checks are done without X
