@@ -7,7 +7,8 @@ echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 ../configure --prefix=${SOFT_DIR} \
-             --with-qt=no
+--with-readline=${READLINE_DIR} \
+---with-qt=no
 make install -j2
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
@@ -30,3 +31,8 @@ prepend-path CFLAGS            "-I${GNUPLOT_DIR}/include"
 prepend-path LDFLAGS           "-L${GNUPLOT_DIR}/lib"
 MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
+
+module avail $NAME
+
+module add $NAME/$VERSION
+which gnuplot

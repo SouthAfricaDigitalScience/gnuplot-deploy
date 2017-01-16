@@ -1,12 +1,11 @@
 #!/bin/bash -e
 . /etc/profile.d/modules.sh
 
-module load ci
+module add ci
 # Dependencies
-
-# module add zlib
-# module add readline
-# module add  lua
+module add zlib
+module add readline
+module add  lua
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 make check
@@ -28,7 +27,7 @@ proc ModulesHelp { } {
 
 module-whatis   "$NAME $VERSION."
 setenv       GNUPLOT_VERSION       $VERSION
-setenv       GNUPLOT_DIR           /apprepo/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv       GNUPLOT_DIR           /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(GNUPLOT_DIR)/lib
 prepend-path prepend-path      $::env(GNUPLOT_DIR)/bin
 prepend-path CFLAGS            "-I${GNUPLOT_DIR}/include"
