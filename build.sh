@@ -7,6 +7,7 @@ module add ci
 
 module add zlib
 module add readline
+module add ncurses
 module add  lua
 
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz

@@ -4,6 +4,7 @@
 module add ci
 # Dependencies
 module add zlib
+module add ncurses
 module add readline
 module add  lua
 
