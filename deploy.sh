@@ -12,10 +12,11 @@ echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
 export LDFLAGS="-L${READLINE_DIR}/lib -L${NCURSES_DIR}/lib -lncurses"
+export CFLAGS="-I${NCURSES_DIR}/include -I${READLINE_DIR}/include"
 ../configure --prefix=${SOFT_DIR} \
 --with-readline=${READLINE_DIR} \
 --with-qt=no
-make -j 2
+make
 
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
@@ -30,12 +31,12 @@ proc ModulesHelp { } {
 }
 
 module-whatis   "$NAME $VERSION : See https://github.com/SouthAfricaDigitalScience/GNUPLOT-deploy"
-setenv GNUPLOT_VERSION       $VERSION
-setenv GNUPLOT_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
+setenv GNUPLOT_VERSION             $VERSION
+setenv GNUPLOT_DIR                       $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(GNUPLOT_DIR)/lib
-prepend-path PATH              $::env(GNUPLOT_DIR)/bin
-prepend-path CFLAGS            "-I${GNUPLOT_DIR}/include"
-prepend-path LDFLAGS           "-L${GNUPLOT_DIR}/lib"
+prepend-path PATH                           $::env(GNUPLOT_DIR)/bin
+prepend-path CFLAGS                      "-I${GNUPLOT_DIR}/include"
+prepend-path LDFLAGS                    "-L${GNUPLOT_DIR}/lib"
 MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
 

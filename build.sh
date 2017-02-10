@@ -46,7 +46,8 @@ tar xzf  ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 mkdir -p ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 export LDFLAGS="-L${READLINE_DIR}/lib -L${NCURSES_DIR}/lib -lncurses"
+export CFLAGS="-I${NCURSES_DIR}/include -I${READLINE_DIR}/include"
 ../configure --prefix=${SOFT_DIR} \
 --with-readline=${READLINE_DIR} \
 --with-qt=no
-make -j 2
+make
