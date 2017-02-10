@@ -16,7 +16,7 @@ export CFLAGS="-I${NCURSES_DIR}/include -I${READLINE_DIR}/include"
 ../configure --prefix=${SOFT_DIR} \
 --with-readline=${READLINE_DIR} \
 --with-qt=no
-make
+make install
 
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
