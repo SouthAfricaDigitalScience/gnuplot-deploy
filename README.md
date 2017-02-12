@@ -10,9 +10,7 @@ Build, test and deploy scripts for [gnuplot](http://www.gnuplot.info/) for CODE-
 This project depends on
 
   * [lua](https://ci.sagrid.ac.za/job/lua-deploy)
-  * [readline](https://ci.sagrid.ac.za/job/readline-deploy)
   * [zlib](https://ci.sagrid.ac.za/job/zlib-deploy)
-  * [ncurses](https://ci.sagrid.ac.za/job/ncurses-deploy)
 
 # Versions
 
@@ -27,7 +25,7 @@ The builds are configured out-of-source with cmake :
 
 ```
 LDFLAGS="-L${READLINE_DIR}/lib -L${NCURSES_DIR} -lncurses" ../configure --prefix=${SOFT_DIR} \
---with-readline=${READLINE_DIR} \
+--with-readline=gnu \
 --with-qt=no
 make -j 2
 ```

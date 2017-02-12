@@ -4,17 +4,16 @@
 echo ${SOFT_DIR}
 module add deploy
 module add  zlib
-module add ncurses
-module add readline
 module add  lua
 
 echo ${SOFT_DIR}
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 echo "All tests have passed, will now build into ${SOFT_DIR}"
-export LDFLAGS="-L${READLINE_DIR}/lib -L${NCURSES_DIR}/lib -lncurses"
-export CFLAGS="-I${NCURSES_DIR}/include -I${READLINE_DIR}/include"
+export CPPFLAGS="-I${LUA_DIR}/include -I${ZLIB_DIR}/include"
+export LDFLAGS="-L${LUA_DIR}/lib -L${ZLIB_DIR}/lib -llua -lz"
 ../configure --prefix=${SOFT_DIR} \
---with-readline=${READLINE_DIR} \
+--with-readline=gnu \
+LUA_LIBS="-L${LUA_DIR} -llua" \
 --with-qt=no
 make install
 
