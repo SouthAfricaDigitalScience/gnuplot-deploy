@@ -28,7 +28,7 @@ module-whatis   "$NAME $VERSION."
 setenv       GNUPLOT_VERSION       $VERSION
 setenv       GNUPLOT_DIR                 /data/ci-build/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(GNUPLOT_DIR)/lib
-prepend-path prepend-path             $::env(GNUPLOT_DIR)/bin
+prepend-path PATH             $::env(GNUPLOT_DIR)/bin
 prepend-path CFLAGS                      "-I$::env(GNUPLOT_DIR)/include"
 prepend-path LDFLAGS                    "-L$::env(GNUPLOT_DIR)/lib"
 MODULE_FILE
