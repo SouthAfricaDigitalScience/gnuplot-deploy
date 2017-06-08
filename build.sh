@@ -4,8 +4,6 @@
 
 module add ci
 # Dependencies
-
-module add zlib
 module add lua
 
 SOURCE_FILE=${NAME}-${VERSION}.tar.gz
@@ -46,8 +44,8 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
 #export LDFLAGS="-L${READLINE_DIR}/lib -L${NCURSES_DIR}/lib -lncurses -lreadline"
  #export LDFLAGS="-L${READLINE_DIR}/lib -L${NCURSES_DIR}/lib -L${ZLIB_DIR}/lib -L${LUA_DIR}/lib -lreadline -lncurses -lz -llua"
 #export CPPFLAGS="-I${NCURSES_DIR}/include -I${READLINE_DIR}/include -I${ZLIB_DIR}/include -I${LUA_DIR}/include"
-export CPPFLAGS="-I${LUA_DIR}/include -I${ZLIB_DIR}/include"
-export LDFLAGS="-L${LUA_DIR}/lib -L${ZLIB_DIR}/lib -llua -lz"
+export CPPFLAGS="-I${LUA_DIR}/include"
+export LDFLAGS="-L${LUA_DIR}/lib -llua"
 ../configure --prefix=${SOFT_DIR} \
 --with-readline=gnu \
 LUA_LIBS="-L${LUA_DIR} -llua" \
