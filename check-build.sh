@@ -3,7 +3,6 @@
 
 module add ci
 # Dependencies
-module add zlib
 module add  lua
 
 cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
