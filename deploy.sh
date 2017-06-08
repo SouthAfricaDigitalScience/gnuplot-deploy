@@ -17,8 +17,8 @@ LUA_LIBS="-L${LUA_DIR} -llua" \
 --with-qt=no
 make install
 
-echo "Creating the modules file directory ${LIBRARIES_MODULES}"
-mkdir -p ${LIBRARIES_MODULES}/${NAME}
+echo "Creating the modules file directory ${LIBRARIES}"
+mkdir -p ${LIBRARIES}/${NAME}
 (
 cat <<MODULE_FILE
 #%Module1.0
@@ -34,10 +34,10 @@ setenv GNUPLOT_VERSION             $VERSION
 setenv GNUPLOT_DIR                       $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION
 prepend-path LD_LIBRARY_PATH   $::env(GNUPLOT_DIR)/lib
 prepend-path PATH                           $::env(GNUPLOT_DIR)/bin
-prepend-path CFLAGS                      "-I${GNUPLOT_DIR}/include"
-prepend-path LDFLAGS                    "-L${GNUPLOT_DIR}/lib"
+prepend-path CFLAGS                      "-I$::env(GNUPLOT_DIR)/include"
+prepend-path LDFLAGS                    "-L$::env(GNUPLOT_DIR)/lib"
 MODULE_FILE
-) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}
+) > ${LIBRARIES}/${NAME}/${VERSION}
 
 module avail $NAME
 
