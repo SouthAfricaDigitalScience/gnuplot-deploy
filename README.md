@@ -1,4 +1,5 @@
-[![Build Status](https://ci.sagrid.ac.za/buildStatus/icon?job=gnuplot-deploy)](https://ci.sagrid.ac.za/job/gnuplot-deploy)
+[![Build Status](https://ci.sagrid.ac.za/buildStatus/icon?job=gnuplot-deploy)](https://ci.sagrid.ac.za/job/gnuplot-deploy) [![DOI](https://zenodo.org/badge/49285358.svg)](https://zenodo.org/badge/latestdoi/49285358)
+
 
 # gnuplot-deploy
 
@@ -31,3 +32,6 @@ make -j 2
 ```
 
 # Citing
+
+Cite as :
+Bruce Becker. (2017, June 28). SouthAfricaDigitalScience/gnuplot-deploy: CODE-RADE Foundation Release 3 - gnuplot. Zenodo. http://doi.org/10.5281/zenodo.820469 
